@@ -25,41 +25,45 @@ head(testSet)
 
 trainSurvived <- trainSet[trainSet$Survived == 1,]
 
-#' good candiate
+# CLASS
 ClassTable <- trainSet[,c("Survived", "Pclass")] %>% table
 colFreqTable <- prop.table(ClassTable,2) %>% as.data.frame
 colFreqTable <- colFreqTable[colFreqTable$Survived == 1,]
 ggplot(aes(x = Pclass, y = Freq), data = colFreqTable) + geom_col()
 prop.table(ClassTable,2)
-#' Yes
+#' Include: yes
 
+# SEX
 SexTable <- trainSet[,c("Survived", "Sex")] %>% table
 colFreqTable <- prop.table(SexTable,2) %>% as.data.frame
 colFreqTable <- colFreqTable[colFreqTable$Survived == 1,]
 ggplot(aes(x = Sex, y = Freq), data = colFreqTable) + geom_col()
 prop.table(SexTable,2)
-#' Yes
+#' Include: yes
 
+# SIBSP
 SibSpTable <- trainSet[,c("Survived", "SibSp")] %>% table
 colFreqTable <- prop.table(SibSpTable,2) %>% as.data.frame
 colFreqTable <- colFreqTable[colFreqTable$Survived == 1,]
 ggplot(aes(x = SibSp, y = Freq), data = colFreqTable) + geom_col()
 prop.table(SibSpTable,2)
-#' good
+#' Include: yes
 
+# PARCH
 ParchTable <- trainSet[,c("Survived", "Parch")] %>% table
 colFreqTable <- prop.table(ParchTable,2) %>% as.data.frame
 colFreqTable <- colFreqTable[colFreqTable$Survived == 1,]
 ggplot(aes(x = Parch, y = Freq), data = colFreqTable) + geom_col()
 prop.table(ParchTable,2)
-#' Probably not
+#' Inculde: probably not
 
+# EMBARKED
 EmbarkedTable <- trainSet[,c("Survived", "Embarked")] %>% table
 colFreqTable <- prop.table(EmbarkedTable,2) %>% as.data.frame
 colFreqTable <- colFreqTable[colFreqTable$Survived == 1,]
 ggplot(aes(x = Embarked, y = Freq), data = colFreqTable) + geom_col()
 prop.table(EmbarkedTable,2)
-#' Definitely include
+#' Include: yes
 
 ####### ------------------- Quantitative Variables ------------------------ #######
 #' DATA MINING
@@ -69,27 +73,28 @@ library(fields)
 
 trainSet$Survived <- trainSet$Survived %>% factor
 
-#' Passenger Id (for fun)
+# ID (for fun)
 p <- ggplot(data = trainSet, aes(x = Survived, y = PassengerId))
 p + geom_boxplot()
 #' Obviously no effect
-#' No
+#' Include: no
 
 #' Age
 p <- ggplot(data = trainSet, aes(x = Survived, y = Age))
 p + geom_boxplot()
 #' Lots of missing values, plus not predictive
-#' No
+#' Include: no
 
 #' Fare
 p <- ggplot(data = trainSet, aes(x = Survived, y = Fare))
 p + geom_boxplot()
-#' Somewhat
-#' Yes
+#' Somewhat predictive
+#' Include: no
 
 #' Cabin
 trainSet$Cabin %>% levels
-# ' Only kind of quantitative, but could be interesting to dissect later
+#' Only kind of quantitative, but could be interesting to dissect later
+#' Include: not yet
 
 ####### ---------------------- Building Model ------------------------ #######
 
