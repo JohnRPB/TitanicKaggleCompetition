@@ -79,19 +79,19 @@ p + geom_boxplot()
 #' Obviously no effect
 #' Include: no
 
-#' Age
+#' AGE
 p <- ggplot(data = trainSet, aes(x = Survived, y = Age))
 p + geom_boxplot()
 #' Lots of missing values, plus not predictive
 #' Include: no
 
-#' Fare
+#' FARE
 p <- ggplot(data = trainSet, aes(x = Survived, y = Fare))
 p + geom_boxplot()
 #' Somewhat predictive
 #' Include: no
 
-#' Cabin
+#' CABIN
 trainSet$Cabin %>% levels
 #' Only kind of quantitative, but could be interesting to dissect later
 #' Include: not yet
