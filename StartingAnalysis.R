@@ -91,8 +91,14 @@ p + geom_boxplot()
 trainSet$Cabin %>% levels
 # ' Only kind of quantitative, but could be interesting to dissect later
 
+####### ---------------------- Building Model ------------------------ #######
 
+set.seed(42)
 
-
+model <- train(Survived ~ Pclass + Sex + SibSp + Embarked + Parch + Fare, 
+               data = trainSet, 
+               method = "rf", 
+               trControl = trainControl(method = "cv", number = 5))
+model
 
 
